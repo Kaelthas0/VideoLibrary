@@ -29,7 +29,10 @@ namespace VideoLibrary
                     list.Add(movie);
                     MovieEdit edit = new MovieEdit(manager, list);
                     edit.ShowDialog();
-                    form.RefreshMovieList(true);
+                    if (edit.changed)
+                    {
+                        form.RefreshMovieList(true);
+                    }
                 }
             };
 

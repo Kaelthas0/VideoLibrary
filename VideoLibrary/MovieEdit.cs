@@ -17,6 +17,7 @@ namespace VideoLibrary
         private Movie currentMovie;
         private Queue<Movie> queue;
         private Random rnd = new Random();
+        public bool changed = false;
 
         public MovieEdit(MovieManager manager, List<Movie> movies)
         {
@@ -49,6 +50,7 @@ namespace VideoLibrary
                 ffMpeg.GetVideoThumbnail(currentMovie.location, stream, ImageTrackBar.Value);
                 currentMovie.image = new Bitmap(stream);
                 manager.InsertOrUpdateMovie(currentMovie);
+                changed = true;
             }
         }
 
@@ -64,6 +66,7 @@ namespace VideoLibrary
             {
                 manager.DeleteMovie(currentMovie);
                 DisplayNewMovie();
+                changed = true;
             }
             
         }

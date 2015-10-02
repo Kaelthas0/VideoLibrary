@@ -28,6 +28,7 @@ namespace VideoLibrary
                     List<Movie> list = new List<Movie>();
                     list.Add(movie);
                     MovieEdit edit = new MovieEdit(manager, list);
+                    edit.changedImage = false;
                     edit.ShowDialog();
                     if (edit.changed)
                     {

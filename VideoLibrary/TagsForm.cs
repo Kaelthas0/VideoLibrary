@@ -13,6 +13,7 @@ namespace VideoLibrary
     partial class TagsForm : Form
     {
         bool all = false;
+        public bool changed = false;
 
         public TagsForm(MovieManager manager)
         {
@@ -33,7 +34,7 @@ namespace VideoLibrary
                 }
                 box.MouseClick += (s, e) =>
                 {
-                    
+                    changed = true;
                     if ((Control.ModifierKeys & Keys.Control) == Keys.Control)
                     {
                         box.genre.notThat = !box.genre.notThat;
@@ -79,6 +80,7 @@ namespace VideoLibrary
                 }
             }
             all = !all;
+            changed = true;
         }
     }
 }

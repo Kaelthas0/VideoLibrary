@@ -84,7 +84,10 @@ namespace VideoLibrary
             using (TagsForm form = new TagsForm(manager))
             {
                 form.ShowDialog();
-                RefreshMovieList();
+                if (form.changed)
+                {
+                    RefreshMovieList();
+                }
             }
         }
 

@@ -18,6 +18,7 @@ namespace VideoLibrary
         private Queue<Movie> queue;
         private Random rnd = new Random();
         public bool changed = false;
+        public bool changedImage = true;
 
         public MovieEdit(MovieManager manager, List<Movie> movies)
         {
@@ -44,11 +45,14 @@ namespace VideoLibrary
         {
             if (MessageBox.Show("Are you sure you want to save this movie?", "Save", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
             {
-                MemoryStream stream = new MemoryStream();
+                if (changedImage)
+                {
+                    MemoryStream stream = new MemoryStream();
 
-                var ffMpeg = new NReco.VideoConverter.FFMpegConverter();
-                ffMpeg.GetVideoThumbnail(currentMovie.location, stream, ImageTrackBar.Value);
-                currentMovie.image = new Bitmap(stream);
+                    var ffMpeg = new NReco.VideoConverter.FFMpegConverter();
+                    ffMpeg.GetVideoThumbnail(currentMovie.location, stream, ImageTrackBar.Value);
+                    currentMovie.image = new Bitmap(stream);
+                }
                 manager.InsertOrUpdateMovie(currentMovie);
                 changed = true;
             }
@@ -152,7 +156,8 @@ namespace VideoLibrary
 
         private void NewImageButton_Click(object sender, EventArgs e)
         {
-            ImageTrackBar.Value = rnd.Next(1, currentMovie.length);   
+            ImageTrackBar.Value = rnd.Next(1, currentMovie.length);
+            changedImage = true;
         }
 
         private void NameTextBox_TextChanged(object sender, EventArgs e)
@@ -192,6 +197,7 @@ namespace VideoLibrary
                 currentMovie.image = new Bitmap(stream);
                 RefreshForm();
                 stream.Close();
+                changedImage = true;
             }
             catch { }
         }

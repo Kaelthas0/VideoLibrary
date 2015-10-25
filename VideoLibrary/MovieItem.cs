@@ -16,6 +16,8 @@ namespace VideoLibrary
         {
             this.movie = movie;
             this.Image = movie.image;
+            this.SizeMode = PictureBoxSizeMode.Zoom;
+            this.BackColor = Color.Black;
             this.MouseDoubleClick += (s, e) => 
             {
                 System.Diagnostics.ProcessStartInfo ps = new System.Diagnostics.ProcessStartInfo("cmd", string.Format("/c \"{0}\"", "\"C:\\Program Files (x86)\\VideoLAN\\VLC\\vlc.exe\" \"" + movie.location + "\""));

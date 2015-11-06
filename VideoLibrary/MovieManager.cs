@@ -160,6 +160,33 @@ namespace VideoLibrary
             }
             return list;
         }
+
+        public List<KeyValuePair<Genre, int>> getMostUsedGenres()
+        {
+            Dictionary<Genre, int> dic = new Dictionary<Genre, int>();
+            foreach (Movie m in movies)
+            {
+                foreach (Genre g in m.genres)
+                {
+                    if (dic.ContainsKey(g))
+                    {
+                        dic[g] += 1;
+                    }
+                    else
+                    {
+                        dic.Add(g, 1);
+                    }
+                }
+            }
+            List<KeyValuePair<Genre, int>> myList = dic.ToList();
+
+            myList.Sort((firstPair, nextPair) =>
+            {
+                return firstPair.Value.CompareTo(nextPair.Value);
+            }
+            );
+            return myList;
+        }
     }
 
     class Compare : IEqualityComparer<Genre>

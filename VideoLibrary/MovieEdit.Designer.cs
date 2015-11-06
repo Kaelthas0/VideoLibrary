@@ -53,6 +53,8 @@
             this.NameTextBox = new System.Windows.Forms.TextBox();
             this.ChangeGenreButton = new System.Windows.Forms.Button();
             this.ImageTrackBar = new System.Windows.Forms.TrackBar();
+            this.MostUsedGenrelistBox = new System.Windows.Forms.ListBox();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImageTrackBar)).BeginInit();
             this.SuspendLayout();
@@ -288,11 +290,31 @@
             this.ImageTrackBar.TabIndex = 9;
             this.ImageTrackBar.ValueChanged += new System.EventHandler(this.ImageTrackBar_ValueChanged);
             // 
+            // MostUsedGenrelistBox
+            // 
+            this.MostUsedGenrelistBox.FormattingEnabled = true;
+            this.MostUsedGenrelistBox.Location = new System.Drawing.Point(409, 298);
+            this.MostUsedGenrelistBox.Name = "MostUsedGenrelistBox";
+            this.MostUsedGenrelistBox.Size = new System.Drawing.Size(183, 173);
+            this.MostUsedGenrelistBox.TabIndex = 10;
+            this.MostUsedGenrelistBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.MostUsedGenrelistBox_MouseDoubleClick);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(409, 279);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(91, 13);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "Most used genres";
+            // 
             // MovieEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(597, 544);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.MostUsedGenrelistBox);
             this.Controls.Add(this.ImageTrackBar);
             this.Controls.Add(this.NameTextBox);
             this.Controls.Add(this.label6);
@@ -355,5 +377,7 @@
         private System.Windows.Forms.TextBox NameTextBox;
         private System.Windows.Forms.Button ChangeGenreButton;
         private System.Windows.Forms.TrackBar ImageTrackBar;
+        private System.Windows.Forms.ListBox MostUsedGenrelistBox;
+        private System.Windows.Forms.Label label7;
     }
 }

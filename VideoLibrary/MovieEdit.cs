@@ -129,7 +129,7 @@ namespace VideoLibrary
                 }
                 if (!contains)
                 {
-                    MostUsedGenrelistBox.Items.Add(item.Key);
+                    MostUsedGenrelistBox.Items.Add(manager.getGenres().Where(ii => ii.name == item.Key).First());
                     i++;
                 }
                 if (i == 10) break;

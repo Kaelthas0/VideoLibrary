@@ -132,7 +132,7 @@ namespace VideoLibrary
                     MostUsedGenrelistBox.Items.Add(manager.getGenres().Where(ii => ii.name == item.Key).First());
                     i++;
                 }
-                if (i == 10) break;
+                if (i == 13) break;
             }
         }
 

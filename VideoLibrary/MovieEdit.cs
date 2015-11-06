@@ -113,6 +113,19 @@ namespace VideoLibrary
             }
 
             ImageTrackBar.Maximum = currentMovie.length;
+            MostUsedGenrelistBox.Items.Clear();
+            List<KeyValuePair<Genre, int>> l = new List<KeyValuePair<Genre, int>>();
+            l = manager.getMostUsedGenres();
+            int i = 0;
+            foreach (KeyValuePair<Genre, int> item in l)
+            {
+                if (!currentMovie.genres.Contains(item.Key))
+                {
+                    MostUsedGenrelistBox.Items.Add(item.Key);
+                    i++;
+                }
+                if (i == 10) break;
+            }
         }
 
         private void DeleteGenreButton_Click(object sender, EventArgs e)
@@ -205,6 +218,12 @@ namespace VideoLibrary
         private void MovieEdit_FormClosed(object sender, FormClosedEventArgs e)
         {
             manager.UpdateMovieList();
+        }
+
+        private void MostUsedGenrelistBox_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            currentMovie.genres.Add((Genre)MostUsedGenrelistBox.SelectedItem);
+            RefreshForm();
         }
     }
 }

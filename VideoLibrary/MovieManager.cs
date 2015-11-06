@@ -161,30 +161,31 @@ namespace VideoLibrary
             return list;
         }
 
-        public List<KeyValuePair<Genre, int>> getMostUsedGenres()
+        public List<KeyValuePair<string, int>> getMostUsedGenres()
         {
-            Dictionary<Genre, int> dic = new Dictionary<Genre, int>();
+            Dictionary<string, int> dic = new Dictionary<string, int>();
             foreach (Movie m in movies)
             {
                 foreach (Genre g in m.genres)
                 {
-                    if (dic.ContainsKey(g))
+                    if (dic.ContainsKey(g.name))
                     {
-                        dic[g] += 1;
+                        dic[g.name] += 1;
                     }
                     else
                     {
-                        dic.Add(g, 1);
+                        dic.Add(g.name, 1);
                     }
                 }
             }
-            List<KeyValuePair<Genre, int>> myList = dic.ToList();
+            List<KeyValuePair<string, int>> myList = dic.ToList();
 
             myList.Sort((firstPair, nextPair) =>
             {
                 return firstPair.Value.CompareTo(nextPair.Value);
             }
             );
+            myList.Reverse();
             return myList;
         }
     }

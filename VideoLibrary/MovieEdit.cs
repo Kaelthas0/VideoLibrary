@@ -114,12 +114,20 @@ namespace VideoLibrary
 
             ImageTrackBar.Maximum = currentMovie.length;
             MostUsedGenrelistBox.Items.Clear();
-            List<KeyValuePair<Genre, int>> l = new List<KeyValuePair<Genre, int>>();
+            List<KeyValuePair<string, int>> l = new List<KeyValuePair<string, int>>();
             l = manager.getMostUsedGenres();
             int i = 0;
-            foreach (KeyValuePair<Genre, int> item in l)
+            foreach (KeyValuePair<string, int> item in l)
             {
-                if (!currentMovie.genres.Contains(item.Key))
+                bool contains = false;
+                foreach (Genre g in currentMovie.genres)
+                {
+                    if (g.name == item.Key)
+                    {
+                        contains = true;
+                    }
+                }
+                if (!contains)
                 {
                     MostUsedGenrelistBox.Items.Add(item.Key);
                     i++;

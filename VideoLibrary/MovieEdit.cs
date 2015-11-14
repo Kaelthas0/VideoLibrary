@@ -218,8 +218,9 @@ namespace VideoLibrary
 
         private void pictureBox1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            System.Diagnostics.ProcessStartInfo ps = new System.Diagnostics.ProcessStartInfo("cmd", string.Format("/c \"{0}\"", "\"C:\\Program Files (x86)\\VideoLAN\\VLC\\vlc.exe\" \"" + currentMovie.location + "\""));
-            System.Diagnostics.Process.Start(ps);
+            //System.Diagnostics.ProcessStartInfo ps = new System.Diagnostics.ProcessStartInfo("cmd", string.Format("/c \"{0}\"", "\"C:\\Program Files (x86)\\VideoLAN\\VLC\\vlc.exe\" \"" + currentMovie.location + "\""));
+            //System.Diagnostics.Process.Start(ps);
+            new MoviePlayer(currentMovie).Show();
         }
 
         private void ImageTrackBar_ValueChanged(object sender, EventArgs e)

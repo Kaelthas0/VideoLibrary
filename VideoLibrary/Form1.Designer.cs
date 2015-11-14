@@ -42,6 +42,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.CurrentlyDisplayedLabel = new System.Windows.Forms.Label();
             this.TotalVideoCountLabel = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -136,7 +138,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1, 179);
+            this.label2.Location = new System.Drawing.Point(1, 194);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 13);
             this.label2.TabIndex = 5;
@@ -145,7 +147,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1, 202);
+            this.label3.Location = new System.Drawing.Point(1, 217);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(98, 13);
             this.label3.TabIndex = 5;
@@ -154,7 +156,7 @@
             // CurrentlyDisplayedLabel
             // 
             this.CurrentlyDisplayedLabel.AutoSize = true;
-            this.CurrentlyDisplayedLabel.Location = new System.Drawing.Point(99, 202);
+            this.CurrentlyDisplayedLabel.Location = new System.Drawing.Point(99, 217);
             this.CurrentlyDisplayedLabel.Name = "CurrentlyDisplayedLabel";
             this.CurrentlyDisplayedLabel.Size = new System.Drawing.Size(0, 13);
             this.CurrentlyDisplayedLabel.TabIndex = 6;
@@ -162,16 +164,35 @@
             // TotalVideoCountLabel
             // 
             this.TotalVideoCountLabel.AutoSize = true;
-            this.TotalVideoCountLabel.Location = new System.Drawing.Point(99, 179);
+            this.TotalVideoCountLabel.Location = new System.Drawing.Point(99, 194);
             this.TotalVideoCountLabel.Name = "TotalVideoCountLabel";
             this.TotalVideoCountLabel.Size = new System.Drawing.Size(0, 13);
             this.TotalVideoCountLabel.TabIndex = 6;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(79, 169);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(68, 20);
+            this.textBox1.TabIndex = 7;
+            this.textBox1.Text = "2";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(1, 172);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(70, 13);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Player Count:";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(998, 589);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.TotalVideoCountLabel);
             this.Controls.Add(this.CurrentlyDisplayedLabel);
             this.Controls.Add(this.label3);
@@ -210,6 +231,8 @@
         private System.Windows.Forms.Label CurrentlyDisplayedLabel;
         private System.Windows.Forms.Label TotalVideoCountLabel;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label4;
 
     }
 }

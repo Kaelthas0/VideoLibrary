@@ -108,6 +108,7 @@ namespace VideoLibrary
 
         public void UpdateMovieList()
         {
+            movies.Clear();
             movies = movieMapper.GetData();
         }
 

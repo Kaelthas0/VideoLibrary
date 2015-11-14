@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VideoLibrary
 {
-    class Genre
+    public class Genre
     {
         public int id;
         public string name;

@@ -17,15 +17,18 @@ namespace VideoLibrary
         private Movie currentMovie;
         private Queue<Movie> queue;
         private Random rnd = new Random();
+        private Form1 form;
         public bool changed = false;
-        public bool changedImage = true;
+        public bool changedImage = false;
+        public bool newMovie = true;
 
-        public MovieEdit(MovieManager manager, List<Movie> movies)
+        public MovieEdit(MovieManager manager, List<Movie> movies, Form1 form)
         {
             InitializeComponent();
             this.manager = manager;
             queue = new Queue<Movie>(movies);
             DisplayNewMovie();
+            this.form = form;
         }
 
         private void DisplayNewMovie()
@@ -34,6 +37,7 @@ namespace VideoLibrary
             {
                 currentMovie = queue.Dequeue();
                 RefreshForm();
+                changedImage = false;
             }
             else
             {
@@ -54,6 +58,11 @@ namespace VideoLibrary
                     currentMovie.image = new Bitmap(stream);
                 }
                 manager.InsertOrUpdateMovie(currentMovie);
+                if (newMovie)
+                {
+                    manager.getMovies().Add(currentMovie);
+
+                }
                 changed = true;
             }
         }
@@ -225,7 +234,7 @@ namespace VideoLibrary
 
         private void MovieEdit_FormClosed(object sender, FormClosedEventArgs e)
         {
-            manager.UpdateMovieList();
+            //manager.UpdateMovieList();
         }
 
         private void MostUsedGenrelistBox_MouseDoubleClick(object sender, MouseEventArgs e)

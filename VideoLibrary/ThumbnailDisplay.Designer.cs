@@ -51,6 +51,8 @@
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ThumbnailDisplay";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.Text = "ThumbnailDisplay";
             this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

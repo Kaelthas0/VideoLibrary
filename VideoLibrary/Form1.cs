@@ -19,6 +19,7 @@ namespace VideoLibrary
         {
             InitializeComponent();
             RefreshMovieList();
+            
         }
 
         private void addNewMoviesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -57,6 +58,7 @@ namespace VideoLibrary
 
             TotalVideoCountLabel.Text = manager.getMovies().Count.ToString();
             CurrentlyDisplayedLabel.Text = flowLayoutPanel1.Controls.Count.ToString();
+            
         }
 
         public void RefreshMovieList(bool scroll)
@@ -95,20 +97,16 @@ namespace VideoLibrary
         private void RandomButton_Click(object sender, EventArgs e)
         {
             Movie[] rMovies = manager.getMoviesWithFilter(searchTextBox.Text).ToArray<Movie>();
-            System.Diagnostics.ProcessStartInfo ps = new System.Diagnostics.ProcessStartInfo("cmd", string.Format("/c \"{0}\"", "\"C:\\Program Files (x86)\\VideoLAN\\VLC\\vlc.exe\" \"" + rMovies[rnd.Next(0, rMovies.Length)].location + "\""));
-            System.Diagnostics.Process.Start(ps);
+            //System.Diagnostics.ProcessStartInfo ps = new System.Diagnostics.ProcessStartInfo("cmd", string.Format("/c \"{0}\"", "\"C:\\Program Files (x86)\\VideoLAN\\VLC\\vlc.exe\" \"" + rMovies[rnd.Next(0, rMovies.Length)].location + "\""));
+            //System.Diagnostics.Process.Start(ps);
+            new MoviePlayer(rMovies[rnd.Next(0, rMovies.Length)]).Show();
         }
 
         private void OpenAllButton_Click(object sender, EventArgs e)
         {
-            Movie[] rMovies = manager.getMoviesWithFilter(searchTextBox.Text).ToArray<Movie>();
-            string allmovies = "";
-            foreach (Movie movie in rMovies)
-            {
-                allmovies += "\"" + movie.location + "\" ";
-            }
-            System.Diagnostics.ProcessStartInfo ps = new System.Diagnostics.ProcessStartInfo("cmd", string.Format("/c \"{0}\"", "\"C:\\Program Files (x86)\\VideoLAN\\VLC\\vlc.exe\" " + allmovies + ""));
-            System.Diagnostics.Process.Start(ps);
+            Movie[] m = manager.getMoviesWithFilter(searchTextBox.Text).ToArray<Movie>();
+            UtilsScript.ShuffleArray<Movie>(m);
+            new MoviePlayer(new HashSet<Movie>(m), Convert.ToInt32(textBox1.Text)).Show();
         }
 
         private void flowLayoutPanel1_MouseClick(object sender, MouseEventArgs e)
@@ -116,4 +114,21 @@ namespace VideoLibrary
             flowLayoutPanel1.Focus();
         }
     }
+
+    public static class UtilsScript {
+
+        private static Random rnd = new Random();
+
+        public static void ShuffleArray<T>(T[] arr)
+        {
+            for (var i = arr.Length - 1; i > 0; i--)
+            {
+                var r = rnd.Next(0, i);
+                var tmp = arr[i];
+                arr[i] = arr[r];
+                arr[r] = tmp;
+            }
+        }
+    }
+
 }

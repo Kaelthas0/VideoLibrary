@@ -23,8 +23,9 @@ namespace VideoLibrary
             this.BackColor = Color.Black;
             this.MouseDoubleClick += (s, e) => 
             {
-                System.Diagnostics.ProcessStartInfo ps = new System.Diagnostics.ProcessStartInfo("cmd", string.Format("/c \"{0}\"", "\"C:\\Program Files (x86)\\VideoLAN\\VLC\\vlc.exe\" \"" + movie.location + "\""));
-                System.Diagnostics.Process.Start(ps);
+                //System.Diagnostics.ProcessStartInfo ps = new System.Diagnostics.ProcessStartInfo("cmd", string.Format("/c \"{0}\"", "\"C:\\Program Files (x86)\\VideoLAN\\VLC\\vlc.exe\" \"" + movie.location + "\""));
+                //System.Diagnostics.Process.Start(ps);
+                new MoviePlayer(movie).Show();
             };
             this.MouseClick += (s, e) =>
             {
@@ -62,9 +63,13 @@ namespace VideoLibrary
 
         void MovieItem_MouseHover(object sender, EventArgs e)
         {
-            
+            int offset = 3;
             Point p = MousePosition;
-            p.Offset(5, 5);
+            if (p.Y + thumbnail.pictureBox1.Size.Height + offset > Screen.PrimaryScreen.Bounds.Height) p.Offset(0, -thumbnail.pictureBox1.Size.Height - offset);
+            else p.Offset(0, offset);
+            if (p.X + thumbnail.pictureBox1.Size.Width + offset > Screen.PrimaryScreen.Bounds.Width) p.Offset(-thumbnail.pictureBox1.Size.Width - offset, 0);
+            else p.Offset(offset, 0);
+
             thumbnail.Location = p;
             thumbnail.pictureBox1.Image = movie.image;
             thumbnail.Show();

@@ -18,6 +18,7 @@ namespace VideoLibrary
         private Queue<Movie> queue;
         private Random rnd = new Random();
         private Form1 form;
+        private MovieItem movieItem;
         public bool changed = false;
         public bool changedImage = false;
         public bool newMovie = true;
@@ -29,6 +30,11 @@ namespace VideoLibrary
             queue = new Queue<Movie>(movies);
             DisplayNewMovie();
             this.form = form;
+        }
+
+        public MovieEdit(MovieManager manager, List<Movie> movies, Form1 form, MovieItem movieItem) : this(manager, movies, form)
+        {
+            this.movieItem = movieItem;
         }
 
         private void DisplayNewMovie()
@@ -61,7 +67,7 @@ namespace VideoLibrary
                 if (newMovie)
                 {
                     manager.getMovies().Add(currentMovie);
-
+                    form.AddNewMovie(currentMovie);
                 }
                 changed = true;
             }
@@ -78,6 +84,7 @@ namespace VideoLibrary
             if (MessageBox.Show("Are you sure you want to delete this movie?", "Delete", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
             {
                 manager.DeleteMovie(currentMovie);
+                form.RemoveMovie(movieItem);
                 DisplayNewMovie();
                 changed = true;
             }

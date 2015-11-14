@@ -35,7 +35,6 @@ namespace VideoLibrary
                 {
                     MovieEdit edit = new MovieEdit(manager, list, this);
                     edit.ShowDialog();
-                    RefreshMovieList();
                 }
             }
             
@@ -74,6 +73,12 @@ namespace VideoLibrary
             item.SizeMode = PictureBoxSizeMode.StretchImage;
             flowLayoutPanel1.Controls.Add(item);
         }
+
+        public void RemoveMovie(MovieItem item)
+        {
+            flowLayoutPanel1.Controls.Remove(item);
+        }
+
 
         private void FilterButton_Click(object sender, EventArgs e)
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VideoLibrary
 {
-    class Selectable<T>
+    public class Selectable<T>
     {
         public T item;
         public bool selected = false;

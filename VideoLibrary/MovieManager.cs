@@ -9,7 +9,7 @@ using WMPLib;
 
 namespace VideoLibrary
 {
-    class MovieManager
+    public class MovieManager
     {
         private HashSet<Movie> movies;
         private HashSet<Selectable<Genre>> genres;
@@ -121,6 +121,7 @@ namespace VideoLibrary
         public void DeleteMovie(Movie movie)
         {
             movieMapper.deleteData(movie);
+            movies.Remove(movie);
         }
 
         public void DeleteGenre(Genre genre)

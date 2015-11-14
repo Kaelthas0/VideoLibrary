@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace VideoLibrary
 {
-    class MovieItem : PictureBox
+    public class MovieItem : PictureBox
     {
         public Movie movie;
         private static ThumbnailDisplay thumbnail = new ThumbnailDisplay();
@@ -32,7 +32,7 @@ namespace VideoLibrary
                 {
                     List<Movie> list = new List<Movie>();
                     list.Add(movie);
-                    MovieEdit edit = new MovieEdit(manager, list, form);
+                    MovieEdit edit = new MovieEdit(manager, list, form, this);
                     edit.changedImage = false;
                     edit.newMovie = false;
                     edit.ShowDialog();

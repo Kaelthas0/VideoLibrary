@@ -33,7 +33,7 @@ namespace VideoLibrary
                 }
                 else
                 {
-                    MovieEdit edit = new MovieEdit(manager, list);
+                    MovieEdit edit = new MovieEdit(manager, list, this);
                     edit.ShowDialog();
                     RefreshMovieList();
                 }
@@ -53,10 +53,7 @@ namespace VideoLibrary
 
             foreach (Movie movie in list)
             {
-                MovieItem item = new MovieItem(movie, manager, this);
-                item.Size = new Size(200, 150);
-                item.SizeMode = PictureBoxSizeMode.StretchImage;
-                flowLayoutPanel1.Controls.Add(item);
+                AddNewMovie(movie);
             }
 
             TotalVideoCountLabel.Text = manager.getMovies().Count.ToString();
@@ -66,17 +63,16 @@ namespace VideoLibrary
         public void RefreshMovieList(bool scroll)
         {
             int value = flowLayoutPanel1.VerticalScroll.Value;
-            flowLayoutPanel1.Controls.Clear();
-            HashSet<Movie> list = manager.getMoviesWithFilter(searchTextBox.Text);
-
-            foreach (Movie movie in list)
-            {
-                MovieItem item = new MovieItem(movie, manager, this);
-                item.Size = new Size(200, 150);
-                item.SizeMode = PictureBoxSizeMode.StretchImage;
-                flowLayoutPanel1.Controls.Add(item);
-            }
+            RefreshMovieList();
             flowLayoutPanel1.VerticalScroll.Value = value;
+        }
+
+        public void AddNewMovie(Movie movie)
+        {
+            MovieItem item = new MovieItem(movie, manager, this);
+            item.Size = new Size(200, 150);
+            item.SizeMode = PictureBoxSizeMode.StretchImage;
+            flowLayoutPanel1.Controls.Add(item);
         }
 
         private void FilterButton_Click(object sender, EventArgs e)

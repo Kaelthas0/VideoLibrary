@@ -10,10 +10,13 @@ namespace VideoLibrary
 {
     class MovieItem : PictureBox
     {
-        Movie movie;
+        public Movie movie;
+        private static ThumbnailDisplay thumbnail = new ThumbnailDisplay();
+        Form form;
 
         public MovieItem(Movie movie, MovieManager manager, Form1 form)
         {
+            this.form = form;
             this.movie = movie;
             this.Image = movie.image;
             this.SizeMode = PictureBoxSizeMode.Zoom;
@@ -29,15 +32,18 @@ namespace VideoLibrary
                 {
                     List<Movie> list = new List<Movie>();
                     list.Add(movie);
-                    MovieEdit edit = new MovieEdit(manager, list);
+                    MovieEdit edit = new MovieEdit(manager, list, form);
                     edit.changedImage = false;
+                    edit.newMovie = false;
                     edit.ShowDialog();
-                    if (edit.changed)
+                    if (edit.changed && edit.changedImage)
                     {
-                        form.RefreshMovieList(true);
+                        Image = movie.image;
                     }
                 }
             };
+            this.MouseHover += MovieItem_MouseHover;
+            this.MouseLeave += MovieItem_MouseLeave;
 
             CustomLabel length = new CustomLabel();
             length.Text = (movie.length / 60).ToString() + ":" + (movie.length % 60).ToString("00");
@@ -46,6 +52,23 @@ namespace VideoLibrary
             length.ForeColor = Color.White;
             length.OutlineForeColor = Color.Black;
             this.Controls.Add(length);
+
+        }
+
+        void MovieItem_MouseLeave(object sender, EventArgs e)
+        {
+            thumbnail.Hide();
+        }
+
+        void MovieItem_MouseHover(object sender, EventArgs e)
+        {
+            
+            Point p = MousePosition;
+            p.Offset(5, 5);
+            thumbnail.Location = p;
+            thumbnail.pictureBox1.Image = movie.image;
+            thumbnail.Show();
+            form.Focus();
         }
     }
 }

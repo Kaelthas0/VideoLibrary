@@ -124,6 +124,12 @@
     <Compile Include="TagsForm.Designer.cs">
       <DependentUpon>TagsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ThumbnailDisplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThumbnailDisplay.Designer.cs">
+      <DependentUpon>ThumbnailDisplay.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ChangeGenreForm.resx">
       <DependentUpon>ChangeGenreForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -150,6 +156,9 @@
     </Compile>
     <EmbeddedResource Include="TagsForm.resx">
       <DependentUpon>TagsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThumbnailDisplay.resx">
+      <DependentUpon>ThumbnailDisplay.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Database1DataSet.xsc">
       <DependentUpon>Database1DataSet.xsd</DependentUpon>

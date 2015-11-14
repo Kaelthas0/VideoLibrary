@@ -198,7 +198,6 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem addNewMoviesToolStripMenuItem;
         private System.Windows.Forms.Button FilterButton;
@@ -210,6 +209,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label CurrentlyDisplayedLabel;
         private System.Windows.Forms.Label TotalVideoCountLabel;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
 
     }
 }

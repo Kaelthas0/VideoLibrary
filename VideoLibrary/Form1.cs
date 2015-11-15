@@ -113,6 +113,39 @@ namespace VideoLibrary
         {
             flowLayoutPanel1.Focus();
         }
+
+        private void OpenSelectedButton_Click(object sender, EventArgs e)
+        {
+            Movie[] m = MovieItem.selectedMovies.ToArray<Movie>();
+            UtilsScript.ShuffleArray<Movie>(m);
+            new MoviePlayer(new HashSet<Movie>(m), Convert.ToInt32(textBox1.Text)).Show();
+        }
+
+        private void DeselectAllButton_Click(object sender, EventArgs e)
+        {
+            foreach (MovieItem item in flowLayoutPanel1.Controls)
+            {
+                item.sBoxImg.Visible = false;
+            }
+            MovieItem.selectedMovies.Clear();
+            SetSelectButtons(false);
+        }
+
+        private void ShowSelectedButton_Click(object sender, EventArgs e)
+        {
+            flowLayoutPanel1.Controls.Clear();
+            foreach (Movie mov in MovieItem.selectedMovies)
+            {
+                AddNewMovie(mov);
+            }
+        }
+
+        public void SetSelectButtons(bool active)
+        {
+            OpenSelectedButton.Enabled = active;
+            ShowSelectedButton.Enabled = active;
+            DeselectAllButton.Enabled = active;
+        }
     }
 
     public static class UtilsScript {

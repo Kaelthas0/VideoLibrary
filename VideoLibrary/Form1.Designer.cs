@@ -44,6 +44,11 @@
             this.TotalVideoCountLabel = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.OpenSelectedButton = new System.Windows.Forms.Button();
+            this.DeselectAllButton = new System.Windows.Forms.Button();
+            this.SelectedCountLabel = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.ShowSelectedButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -138,7 +143,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1, 194);
+            this.label2.Location = new System.Drawing.Point(1, 288);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 13);
             this.label2.TabIndex = 5;
@@ -147,7 +152,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1, 217);
+            this.label3.Location = new System.Drawing.Point(1, 311);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(98, 13);
             this.label3.TabIndex = 5;
@@ -156,7 +161,7 @@
             // CurrentlyDisplayedLabel
             // 
             this.CurrentlyDisplayedLabel.AutoSize = true;
-            this.CurrentlyDisplayedLabel.Location = new System.Drawing.Point(99, 217);
+            this.CurrentlyDisplayedLabel.Location = new System.Drawing.Point(99, 311);
             this.CurrentlyDisplayedLabel.Name = "CurrentlyDisplayedLabel";
             this.CurrentlyDisplayedLabel.Size = new System.Drawing.Size(0, 13);
             this.CurrentlyDisplayedLabel.TabIndex = 6;
@@ -164,14 +169,14 @@
             // TotalVideoCountLabel
             // 
             this.TotalVideoCountLabel.AutoSize = true;
-            this.TotalVideoCountLabel.Location = new System.Drawing.Point(99, 194);
+            this.TotalVideoCountLabel.Location = new System.Drawing.Point(99, 288);
             this.TotalVideoCountLabel.Name = "TotalVideoCountLabel";
             this.TotalVideoCountLabel.Size = new System.Drawing.Size(0, 13);
             this.TotalVideoCountLabel.TabIndex = 6;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(79, 169);
+            this.textBox1.Location = new System.Drawing.Point(79, 263);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(68, 20);
             this.textBox1.TabIndex = 7;
@@ -180,17 +185,76 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1, 172);
+            this.label4.Location = new System.Drawing.Point(1, 266);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(70, 13);
             this.label4.TabIndex = 8;
             this.label4.Text = "Player Count:";
+            // 
+            // OpenSelectedButton
+            // 
+            this.OpenSelectedButton.Enabled = false;
+            this.OpenSelectedButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.OpenSelectedButton.Location = new System.Drawing.Point(3, 169);
+            this.OpenSelectedButton.Name = "OpenSelectedButton";
+            this.OpenSelectedButton.Size = new System.Drawing.Size(147, 23);
+            this.OpenSelectedButton.TabIndex = 9;
+            this.OpenSelectedButton.Text = "Open Selected";
+            this.OpenSelectedButton.UseVisualStyleBackColor = true;
+            this.OpenSelectedButton.Click += new System.EventHandler(this.OpenSelectedButton_Click);
+            // 
+            // DeselectAllButton
+            // 
+            this.DeselectAllButton.Enabled = false;
+            this.DeselectAllButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DeselectAllButton.Location = new System.Drawing.Point(3, 227);
+            this.DeselectAllButton.Name = "DeselectAllButton";
+            this.DeselectAllButton.Size = new System.Drawing.Size(147, 23);
+            this.DeselectAllButton.TabIndex = 10;
+            this.DeselectAllButton.Text = "Deselect All";
+            this.DeselectAllButton.UseVisualStyleBackColor = true;
+            this.DeselectAllButton.Click += new System.EventHandler(this.DeselectAllButton_Click);
+            // 
+            // SelectedCountLabel
+            // 
+            this.SelectedCountLabel.AutoSize = true;
+            this.SelectedCountLabel.Location = new System.Drawing.Point(95, 334);
+            this.SelectedCountLabel.Name = "SelectedCountLabel";
+            this.SelectedCountLabel.Size = new System.Drawing.Size(13, 13);
+            this.SelectedCountLabel.TabIndex = 12;
+            this.SelectedCountLabel.Text = "0";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(1, 334);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(89, 13);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Selected Movies:";
+            // 
+            // ShowSelectedButton
+            // 
+            this.ShowSelectedButton.Enabled = false;
+            this.ShowSelectedButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ShowSelectedButton.Location = new System.Drawing.Point(3, 198);
+            this.ShowSelectedButton.Name = "ShowSelectedButton";
+            this.ShowSelectedButton.Size = new System.Drawing.Size(147, 23);
+            this.ShowSelectedButton.TabIndex = 11;
+            this.ShowSelectedButton.Text = "Show Selected";
+            this.ShowSelectedButton.UseVisualStyleBackColor = true;
+            this.ShowSelectedButton.Click += new System.EventHandler(this.ShowSelectedButton_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(998, 589);
+            this.Controls.Add(this.ShowSelectedButton);
+            this.Controls.Add(this.SelectedCountLabel);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.DeselectAllButton);
+            this.Controls.Add(this.OpenSelectedButton);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.TotalVideoCountLabel);
@@ -230,9 +294,14 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label CurrentlyDisplayedLabel;
         private System.Windows.Forms.Label TotalVideoCountLabel;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button OpenSelectedButton;
+        private System.Windows.Forms.Button DeselectAllButton;
+        public System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Label label6;
+        public System.Windows.Forms.Label SelectedCountLabel;
+        private System.Windows.Forms.Button ShowSelectedButton;
 
     }
 }

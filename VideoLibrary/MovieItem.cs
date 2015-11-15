@@ -10,12 +10,15 @@ namespace VideoLibrary
 {
     public class MovieItem : PictureBox
     {
+        public static HashSet<Movie> selectedMovies = new HashSet<Movie>();
         public Movie movie;
         private static ThumbnailDisplay thumbnail = new ThumbnailDisplay();
-        Form form;
+        Form1 form;
+        public PictureBox sBoxImg = new PictureBox();
 
         public MovieItem(Movie movie, MovieManager manager, Form1 form)
         {
+            
             this.form = form;
             this.movie = movie;
             this.Image = movie.image;
@@ -27,6 +30,11 @@ namespace VideoLibrary
                 //System.Diagnostics.Process.Start(ps);
                 new MoviePlayer(movie).Show();
             };
+            sBoxImg.Image = Properties.Resources.selectedImg;
+            sBoxImg.Size = new System.Drawing.Size(10, 10);
+            sBoxImg.Location = new Point(190, 0);
+            sBoxImg.Visible = false;
+            Controls.Add(sBoxImg);
             this.MouseClick += (s, e) =>
             {
                 if (e.Button == System.Windows.Forms.MouseButtons.Right)
@@ -42,6 +50,21 @@ namespace VideoLibrary
                         Image = movie.image;
                     }
                 }
+                else if (e.Button == System.Windows.Forms.MouseButtons.Left && Form.ModifierKeys == Keys.Control)
+                {
+                    if (selectedMovies.Contains(movie))
+                    {
+                        selectedMovies.Remove(movie);
+                        sBoxImg.Visible = false;
+                    }
+                    else
+                    {
+                        selectedMovies.Add(movie);
+                        sBoxImg.Visible = true;
+                    }
+                    form.SelectedCountLabel.Text = selectedMovies.Count.ToString();
+                    form.SetSelectButtons(selectedMovies.Count != 0);
+                }
             };
             this.MouseHover += MovieItem_MouseHover;
             this.MouseLeave += MovieItem_MouseLeave;
@@ -54,6 +77,11 @@ namespace VideoLibrary
             length.OutlineForeColor = Color.Black;
             this.Controls.Add(length);
 
+            if (selectedMovies.Contains(movie))
+            {
+                sBoxImg.Visible = true;
+            }
+
         }
 
         void MovieItem_MouseLeave(object sender, EventArgs e)
@@ -63,6 +91,7 @@ namespace VideoLibrary
 
         void MovieItem_MouseHover(object sender, EventArgs e)
         {
+            
             int offset = 3;
             Point p = MousePosition;
             if (p.Y + thumbnail.pictureBox1.Size.Height + offset > Screen.PrimaryScreen.Bounds.Height) p.Offset(0, -thumbnail.pictureBox1.Size.Height - offset);
@@ -73,7 +102,8 @@ namespace VideoLibrary
             thumbnail.Location = p;
             thumbnail.pictureBox1.Image = movie.image;
             thumbnail.Show();
-            form.Focus();
+            //form.Focus();
+            form.flowLayoutPanel1.Focus();
         }
     }
 }

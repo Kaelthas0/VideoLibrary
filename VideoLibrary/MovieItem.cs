@@ -26,9 +26,15 @@ namespace VideoLibrary
             this.BackColor = Color.Black;
             this.MouseDoubleClick += (s, e) => 
             {
-                //System.Diagnostics.ProcessStartInfo ps = new System.Diagnostics.ProcessStartInfo("cmd", string.Format("/c \"{0}\"", "\"C:\\Program Files (x86)\\VideoLAN\\VLC\\vlc.exe\" \"" + movie.location + "\""));
-                //System.Diagnostics.Process.Start(ps);
-                new MoviePlayer(movie).Show();
+                if (Form.ModifierKeys == Keys.Control)
+                {
+                    System.Diagnostics.ProcessStartInfo ps = new System.Diagnostics.ProcessStartInfo("cmd", string.Format("/c \"{0}\"", "\"C:\\Program Files (x86)\\VideoLAN\\VLC\\vlc.exe\" \"" + movie.location + "\""));
+                    System.Diagnostics.Process.Start(ps);
+                }
+                else
+                {
+                    new MoviePlayer(movie).Show();
+                }
             };
             sBoxImg.Image = Properties.Resources.selectedImg;
             sBoxImg.Size = new System.Drawing.Size(10, 10);

@@ -137,16 +137,7 @@ namespace VideoLibrary
             }
             if (e.KeyCode == Keys.Right)
             {
-                AxVLCPlugin2 p = (AxVLCPlugin2)sender;
-                if (movies.Count != 0)
-                {
-                    if (p.playlist.currentItem == p.playlist.items.count - 1)
-                    {
-                        Movie m = movies.Dequeue();
-                        p.playlist.add(@"file:///" + m.location);
-                    }
-                }
-                p.playlist.next();
+                NextVideo(sender);
             }
             if (e.KeyCode == Keys.Left)
             {
@@ -154,6 +145,38 @@ namespace VideoLibrary
 
                 p.playlist.prev();
             }
+            if (e.KeyCode == Keys.Up)
+            {
+                AxVLCPlugin2 p = (AxVLCPlugin2)sender;
+                double i = 10000 / p.input.length;
+                if (p.input.position+i < 1)
+                    p.input.position += i;
+                else
+                    NextVideo(sender);
+            }
+            if(e.KeyCode == Keys.Down)
+            {
+                AxVLCPlugin2 p = (AxVLCPlugin2)sender;
+                double i = 10000 / p.input.length;
+                if (p.input.position - i > 0)
+                    p.input.position -= i;
+                else
+                    p.input.position = 0;
+            }
+        }
+
+        private void NextVideo(object sender)
+        {
+            AxVLCPlugin2 p = (AxVLCPlugin2)sender;
+            if (movies.Count != 0)
+            {
+                if (p.playlist.currentItem == p.playlist.items.count - 1)
+                {
+                    Movie m = movies.Dequeue();
+                    p.playlist.add(@"file:///" + m.location);
+                }
+            }
+            p.playlist.next();
         }
     }
 }

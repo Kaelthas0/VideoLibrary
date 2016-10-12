@@ -180,7 +180,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(68, 20);
             this.textBox1.TabIndex = 7;
-            this.textBox1.Text = "2";
+            this.textBox1.Text = "1";
             // 
             // label4
             // 

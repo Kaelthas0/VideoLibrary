@@ -73,8 +73,8 @@
             // addNewMoviesToolStripMenuItem
             // 
             this.addNewMoviesToolStripMenuItem.Name = "addNewMoviesToolStripMenuItem";
-            this.addNewMoviesToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
-            this.addNewMoviesToolStripMenuItem.Text = "AddNewMovies";
+            this.addNewMoviesToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.addNewMoviesToolStripMenuItem.Text = "Add new Movies";
             this.addNewMoviesToolStripMenuItem.Click += new System.EventHandler(this.addNewMoviesToolStripMenuItem_Click);
             // 
             // flowLayoutPanel1

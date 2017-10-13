@@ -36,11 +36,12 @@
             // 
             // axVLCPlugin21
             // 
+            this.axVLCPlugin21.Dock = System.Windows.Forms.DockStyle.Fill;
             this.axVLCPlugin21.Enabled = true;
             this.axVLCPlugin21.Location = new System.Drawing.Point(0, 0);
             this.axVLCPlugin21.Name = "axVLCPlugin21";
             this.axVLCPlugin21.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axVLCPlugin21.OcxState")));
-            this.axVLCPlugin21.Size = new System.Drawing.Size(320, 240);
+            this.axVLCPlugin21.Size = new System.Drawing.Size(622, 490);
             this.axVLCPlugin21.TabIndex = 0;
             this.axVLCPlugin21.Visible = false;
             this.axVLCPlugin21.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.axVLCPlugin21_PreviewKeyDown);
@@ -63,10 +64,11 @@
             this.ClientSize = new System.Drawing.Size(622, 490);
             this.Controls.Add(this.axVLCPlugin21);
             this.Controls.Add(this.flowLayoutPanel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "MoviePlayer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "MoviePlayer";
+            this.ResizeEnd += new System.EventHandler(this.MoviePlayer_ResizeEnd);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MoviePlayer_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.axVLCPlugin21)).EndInit();
             this.ResumeLayout(false);

@@ -19,6 +19,7 @@ namespace VideoLibrary
         private int width, height;
         private AxVLCPlugin2[] player;
         private PlayerController playerController;
+        private bool created = false;
 
         public MoviePlayer(Movie movie)
         {
@@ -31,6 +32,7 @@ namespace VideoLibrary
             axVLCPlugin21.playlist.add(@"file:///" + movie.location);
             axVLCPlugin21.playlist.play();
             playerController = new PlayerController(axVLCPlugin21);
+            created = true;
         }
 
         public MoviePlayer(HashSet<Movie> movies, int playerCount)
@@ -44,6 +46,7 @@ namespace VideoLibrary
             RowCalc();
             CreatePlayer();
             playerController = new PlayerController(player);
+            created = true;
         }
 
         private void ColumnCalc()
@@ -84,6 +87,7 @@ namespace VideoLibrary
                 player[i].AutoLoop = true;
                 player[i].AutoPlay = true;
                 player[i].volume = 80;
+                
                 if (movies.Count != 0)
                 {
                     Movie m = movies.Dequeue();
@@ -177,6 +181,14 @@ namespace VideoLibrary
                 }
             }
             p.playlist.next();
+        }
+
+        private void MoviePlayer_ResizeEnd(object sender, EventArgs e)
+        {
+            if (playerCount == 1 && created)
+            {
+                player[0].Size = new Size(this.Size.Width, this.Size.Height);
+            }
         }
     }
 }

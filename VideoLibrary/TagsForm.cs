@@ -14,11 +14,19 @@ namespace VideoLibrary
     {
         bool all = false;
         public bool changed = false;
+        private MovieManager manager;
 
         public TagsForm(MovieManager manager)
         {
             InitializeComponent();
-            foreach (Selectable<Genre> genre in manager.getAllSearchTags())
+            this.manager = manager;
+            AddTags();
+        }
+
+        private void AddTags(string filter = "")
+        {
+            flowLayoutPanel1.Controls.Clear();
+            foreach (Selectable<Genre> genre in manager.getAllSearchTags(filter))
             {
                 TagItem box = new TagItem(genre);
                 box.Text = genre.item.name;
@@ -53,7 +61,7 @@ namespace VideoLibrary
                         box.Checked = !box.Checked;
                         box.genre.selected = box.Checked;
                     }
-                    
+
                 };
 
                 flowLayoutPanel1.Controls.Add(box);
@@ -81,6 +89,11 @@ namespace VideoLibrary
             }
             all = !all;
             changed = true;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            AddTags(textBox1.Text);
         }
     }
 }

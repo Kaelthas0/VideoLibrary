@@ -145,9 +145,11 @@ namespace VideoLibrary
             return list;
         }
 
-        public HashSet<Selectable<Genre>> getAllSearchTags()
+        public List<Selectable<Genre>> getAllSearchTags(string filter = "")
         {
-            return genres;
+            if (string.IsNullOrEmpty(filter))
+                return genres.ToList();
+            return genres.Where(g => g.item.name.ToLower().Contains(filter.ToLower())).ToList();
         }
 
         private HashSet<Selectable<Genre>> getSearchTags()

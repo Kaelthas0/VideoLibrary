@@ -97,9 +97,15 @@ namespace VideoLibrary
         private void RandomButton_Click(object sender, EventArgs e)
         {
             Movie[] rMovies = manager.getMoviesWithFilter(searchTextBox.Text).ToArray<Movie>();
-            //System.Diagnostics.ProcessStartInfo ps = new System.Diagnostics.ProcessStartInfo("cmd", string.Format("/c \"{0}\"", "\"C:\\Program Files (x86)\\VideoLAN\\VLC\\vlc.exe\" \"" + rMovies[rnd.Next(0, rMovies.Length)].location + "\""));
-            //System.Diagnostics.Process.Start(ps);
-            new MoviePlayer(rMovies[rnd.Next(0, rMovies.Length)]).Show();
+            if ((ModifierKeys & Keys.Control) == Keys.Control)
+            {
+                System.Diagnostics.ProcessStartInfo ps = new System.Diagnostics.ProcessStartInfo("cmd", string.Format("/c \"{0}\"", "\"C:\\Program Files (x86)\\VideoLAN\\VLC\\vlc.exe\" \"" + rMovies[rnd.Next(0, rMovies.Length)].location + "\""));
+                System.Diagnostics.Process.Start(ps);
+            }
+            else
+            {
+                new MoviePlayer(rMovies[rnd.Next(0, rMovies.Length)]).Show();
+            }
         }
 
         private void OpenAllButton_Click(object sender, EventArgs e)

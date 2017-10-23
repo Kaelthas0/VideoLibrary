@@ -36,3 +36,6 @@ VideoLibrary/obj/Debug/TempPE/Database1DataSet.Designer.cs.dll
 VideoLibrary/obj/Debug/TempPE/Database1DataSet.Designer.cs.dll
 .vs/VideoLibrary/v15/sqlite3/storage.ide
 *.ide
+*.ide
+*.ide
+VideoLibrary/Database1_log.ldf
